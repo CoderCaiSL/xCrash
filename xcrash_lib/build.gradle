@@ -23,6 +23,7 @@ android {
             path "src/main/cpp/CMakeLists.txt"
             version rootProject.ext.cmakeVersion
         }
+
     }
     compileOptions {
         sourceCompatibility rootProject.ext.javaVersion
@@ -36,7 +37,13 @@ android {
             minifyEnabled false
         }
     }
+//    packagingOptions {
+//        jniLibs {
+//            useLegacyPackaging true
+//        }
+//    }
 }
 
 apply from: rootProject.file('gradle/check.gradle')
-apply from: rootProject.file('gradle/publish.gradle')
+apply from: './maven_publish.gradle'
+//apply from: rootProject.file('gradle/publish.gradle')

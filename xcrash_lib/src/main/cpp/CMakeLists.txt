@@ -30,6 +30,7 @@ target_include_directories(xcrash PUBLIC
 target_link_libraries(xcrash
         log
         dl)
+target_link_options(xcrash PRIVATE "-Wl,-z,max-page-size=16384,-z,common-page-size=16384")
 
 if(USEASAN)
 
@@ -103,6 +104,8 @@ set_source_files_properties(${LZME_SRC} PROPERTIES
 add_executable(xcrash_dumper
         ${XCRASH_DUMPER_SRC}
         ${LZME_SRC})
+
+target_link_options(xcrash_dumper PRIVATE "-Wl,-z,max-page-size=16384,-z,common-page-size=16384")
 
 target_include_directories(xcrash_dumper PUBLIC
         xcrash_dumper
